@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+	<meta charset="utf-8">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Toggle</title>
+</head>
+
+<body>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.0.js"></script>
+<button>clickbait</button>
+
+<div id="x">
+	<p> Toggle Boi</p><br><img src='boom.jpg' width='300px'>
+
+</div>
+
+<div id="y">
+	<h1>Khabib Rules</h1>
+
+</div>
+<script type="text/javascript">
+	
+	$("button").click(function(){
+
+		$("#x").toggle();
+		$("#y").fadeOut(2000).fadeIn(1000);
+	});
+</script>
+</body>
+
+</html>

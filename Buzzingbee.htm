@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Buzzing</title>
+</head>
+<style type="text/css">
+
+
+	body{
+		background-color: aqua;
+	}
+	canvas{
+		background-color: white;
+	}
+	</style>
+	
+<body>
+<canvas id="canvas" height=200 width=200 style="border:5px solid darkgoldenrod;"></canvas>
+	<script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+	<script type="text/javascript">
+
+		c=document.getElementById("canvas");
+		ctx=c.getContext("2d");
+
+		var circle=function(x,y,radius,fillcircle){
+		ctx.beginPath();
+		ctx.arc(x,y,radius,0,Math.PI * 2,false);
+
+		if(fillcircle)
+		{ctx.fill();}
+		//if fill circle is true then draw a filled circle
+			else
+		{ctx.stroke();}
+	//else draw only an outline of the circle
+
+	};
+	var update = function(coordinate){
+		var offset =Math.random()*4-2;
+		coordinate+=offset;
+
+
+
+
+
+
+
+
+
+		if (coordinate>200)
+		{
+
+			coordinate=200;//so the bee does not go above the width of the canvas
+		}
+		if(coordinate<0)
+		{
+			coordinate=0
+		}
+		return coordinate;
+
+	};
+	var drawBee=function(x,y){
+		ctx.lineWidth=2;
+		ctx.strokeStyle="Black";//outline color
+		ctx.fillStyle="Gold";//fil color
+
+		circle(x,y,8,true);//main filled circle
+		circle(x,y,8,false);//main outer circle
+		circle(x-5,y-11,5,false);//left wing
+		circle(x+5,y-11,5,false);//right wing only x value changes
+		circle(x-3,y-1,1,false)
+		circle(x+3,y-1,1,false)
+	};
+
+	//drawBee(100,100);
+	x=100
+	y=100
+
+timer=30
+function fnNormal(){
+
+	timer=30
+}
+function fnMutate(){
+
+	timer=1
+}
+	setInterval (
+		function(){
+			ctx.clearRect(0,0,200,200);
+
+				drawBee(x,y);
+				x=update(x);
+				y=update(y);
+
+		},timer);
+
+	</script>
+<p>this is the <b>Buzzing Bee</b> code . It is very awesome</p>
+<button onclick="fnMutate()">Mutant</button>
+<button onclick="fnNormal()">Normie Bee</button>
+
+
+</script>
+</body>
+</html>
